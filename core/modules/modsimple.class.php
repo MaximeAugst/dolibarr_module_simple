@@ -96,7 +96,7 @@ class modsimple extends DolibarrModules
 		
 		$this->module_parts = array(
 			'triggers'=>1
-			,'hooks'=>array('contactcard')
+			,'hooks'=>array('contactcard', 'thirdpartycard')
 		);
 		
 		//TODO fin de la copie

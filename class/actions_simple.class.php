@@ -65,14 +65,34 @@ class Actionssimple
 
 		$error = 0; // Error counter
 		$myvalue = ''; // A result value
+		//var_dump($object);
+        
+		global $db,$langs;
+        
+        		
+		$societe = new Societe($db);
+		$societe->fetch($object->socid);
 
 		if (in_array('contactcard', explode(':', $parameters['context'])))
 		{
 		  
 		  echo '<tr>
-		  	<td>Hook 208000</td><td colspan="'.$parameters['colspan'].'">Affichez ici le code postal du tiers du contact</td>
+		  	<td>Code</td><td colspan="'.$parameters['colspan'].'">'.$societe->zip.'</td>
 		  </tr>';
 		}
+        
+
+        
+        if (in_array('thirdpartycard', explode(':', $parameters['context'])))
+		{
+		  dol_include_once('/simple/class/Grade.class.php');
+		  echo '<tr>
+		  	<td>Grade</td><td colspan="'.$parameters['colspan'].'">'.Grade::get($object).'</td>
+		  </tr>';
+		}
+        
+
+        
 
 		if (! $error)
 		{
