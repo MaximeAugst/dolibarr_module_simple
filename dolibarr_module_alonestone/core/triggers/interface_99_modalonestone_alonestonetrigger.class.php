@@ -17,8 +17,8 @@
  */
 
 /**
- * 	\file		core/triggers/interface_99_modMyodule_simpletrigger.class.php
- * 	\ingroup	simple
+ * 	\file		core/triggers/interface_99_modMyodule_alonestonetrigger.class.php
+ * 	\ingroup	alonestone
  * 	\brief		Sample trigger
  * 	\remarks	You can create other triggers by copying this one
  * 				- File name should be either:
@@ -33,7 +33,7 @@
 /**
  * Trigger class
  */
-class Interfacesimpletrigger
+class Interfacealonestonetrigger
 {
 
     private $db;
@@ -54,7 +54,7 @@ class Interfacesimpletrigger
             . "They are provided for tutorial purpose only.";
         // 'development', 'experimental', 'dolibarr' or version
         $this->version = 'development';
-        $this->picto = 'simple@simple';
+        $this->picto = 'alonestone@alonestone';
     }
 
     /**

@@ -18,7 +18,7 @@
 
 /**
  * 	\file		core/boxes/mybox.php
- * 	\ingroup	simple
+ * 	\ingroup	alonestone
  * 	\brief		This file is a sample box definition file
  * 				Put some comments here
  */
@@ -27,13 +27,13 @@ include_once DOL_DOCUMENT_ROOT . "/core/boxes/modules_boxes.php";
 /**
  * Class to manage the box
  */
-class simplebox extends ModeleBoxes
+class alonestonebox extends ModeleBoxes
 {
 
     public $boxcode = "mybox";
-    public $boximg = "simple@simple";
+    public $boximg = "alonestone@alonestone";
     public $boxlabel;
-    public $depends = array("simple");
+    public $depends = array("alonestone");
     public $db;
     public $param;
     public $info_box_head = array();
@@ -62,7 +62,7 @@ class simplebox extends ModeleBoxes
 
         $this->max = $max;
 
-        //include_once DOL_DOCUMENT_ROOT . "/simple/class/simple.class.php";
+        //include_once DOL_DOCUMENT_ROOT . "/alonestone/class/alonestone.class.php";
 
         $text = $langs->trans("MyBoxDescription", $max);
         $this->info_box_head = array(

@@ -17,16 +17,16 @@
  */
 
 /**
- * \file    class/actions_simple.class.php
- * \ingroup simple
+ * \file    class/actions_alonestone.class.php
+ * \ingroup alonestone
  * \brief   This file is an example hook overload class file
  *          Put some comments here
  */
 
 /**
- * Class Actionssimple
+ * Class Actionsalonestone
  */
-class Actionssimple
+class Actionsalonestone 
 {
 	/**
 	 * @var array Hook results. Propagated to $hookmanager->resArray for later reuse
@@ -48,6 +48,8 @@ class Actionssimple
 	 */
 	public function __construct()
 	{
+
+	
 	}
 
 	/**
@@ -59,40 +61,46 @@ class Actionssimple
 	 * @param   HookManager     $hookmanager    Hook manager propagated to allow calling another hook
 	 * @return  int                             < 0 on error, 0 on success, 1 to replace standard code
 	 */
+	 
+	 
+	 
+	function moreLink($parameters, &$object, &$action, $hookmanager) {
+		 global $db,$langs;
+		//var_dump($parameters['context']);
+		if (in_array('links', explode(':', $parameters['context'])) && empty($parameters['option']))
+                {
+                dol_include_once('/alonestone/class/formulaire.class.php');
+		$cont = new Contact($db);
+		$cont->fetch($object->id);
+//		$soc->fetch_optionals($soc->id);
+//var_dump($soc);
+                $this->resprints = $parameters['link']. ' ' . Formulaire::get($cont);
+		
+//var_dump($this->resPrint);
+		return 1;
+
+		}
+	}
+	
+	
 	function formObjectOptions($parameters, &$object, &$action, $hookmanager)
 	{
 //TODO méthode à copier
 
 		$error = 0; // Error counter
 		$myvalue = ''; // A result value
-		//var_dump($object);
-        
-		global $db,$langs;
-        
-        		
-		$societe = new Societe($db);
-		$societe->fetch($object->socid);
 
-		if (in_array('contactcard', explode(':', $parameters['context'])))
+		//var_dump($parameters['context']);
+		
+		if (in_array('tab104125', explode(':', $parameters['context'])))
 		{
-		  
-		  echo '<tr>
-		  	<td>Code</td><td colspan="'.$parameters['colspan'].'">'.$societe->zip.'</td>
-		  </tr>';
-		}
-        
+		  global $db,$langs;
+		
+		dol_include_once('/alonestone/class/formulaire.class.php');
 
-        
-        if (in_array('thirdpartycard', explode(':', $parameters['context'])))
-		{
-		  dol_include_once('/simple/class/Grade.class.php');
-		  echo '<tr>
-		  	<td>Grade</td><td colspan="'.$parameters['colspan'].'">'.Grade::get($object).'</td>
-		  </tr>';
+		  echo Formulaire::get($object);
+		 
 		}
-        
-
-        
 
 		if (! $error)
 		{

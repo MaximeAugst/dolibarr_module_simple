@@ -17,8 +17,8 @@
  */
 
 /**
- * 	\file		admin/simple.php
- * 	\ingroup	simple
+ * 	\file		admin/alonestone.php
+ * 	\ingroup	alonestone
  * 	\brief		This file is an example module setup page
  * 				Put some comments here
  */
@@ -30,10 +30,10 @@ if (! $res) {
 
 // Libraries
 require_once DOL_DOCUMENT_ROOT . "/core/lib/admin.lib.php";
-require_once '../lib/simple.lib.php';
+require_once '../lib/alonestone.lib.php';
 
 // Translations
-$langs->load("simple@simple");
+$langs->load("alonestone@alonestone");
 
 // Access control
 if (! $user->admin) {
@@ -77,7 +77,7 @@ if (preg_match('/del_(.*)/',$action,$reg))
 /*
  * View
  */
-$page_name = "simpleSetup";
+$page_name = "alonestoneSetup";
 llxHeader('', $langs->trans($page_name));
 
 // Subheader
@@ -86,13 +86,13 @@ $linkback = '<a href="' . DOL_URL_ROOT . '/admin/modules.php">'
 print_fiche_titre($langs->trans($page_name), $linkback);
 
 // Configuration header
-$head = simpleAdminPrepareHead();
+$head = alonestoneAdminPrepareHead();
 dol_fiche_head(
     $head,
     'settings',
     $langs->trans("Module208000Name"),
     0,
-    "simple@simple"
+    "alonestone@alonestone"
 );
 
 // Setup page goes here
