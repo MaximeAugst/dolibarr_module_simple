@@ -15,7 +15,7 @@ dol_include_once('/alonestone/class/alonestone.class.php');
 
 $PDOdb=new TPDOdb;
 
-$o=new TSimple208000;
+$o=new alonestone;
 $o->init_db_by_vars($PDOdb);
 
 dol_include_once('/alonestone/class/relation.class.php');

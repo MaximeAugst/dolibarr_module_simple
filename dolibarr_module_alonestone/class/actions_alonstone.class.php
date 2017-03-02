@@ -90,7 +90,7 @@ class Actionsalonestone
 		$error = 0; // Error counter
 		$myvalue = ''; // A result value
 
-		//var_dump($parameters['context']);
+		var_dump($object);
 		
 		if (in_array('tab104125', explode(':', $parameters['context'])))
 		{

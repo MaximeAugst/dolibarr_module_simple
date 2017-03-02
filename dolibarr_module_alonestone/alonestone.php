@@ -4,19 +4,23 @@
 	
 	dol_include_once('/contact/class/contact.class.php');
 	dol_include_once('/alonestone/class/alonestone.class.php');
-
+	global $db;
 
 	$langs->load('alonestone@alonestone');
+		
+	//var_dump($db);
 	
 	$object = new Contact($db);
-	$object->fetch(GETPOST('note'));
-	
+	$object->fetch(GETPOST('fk_contact'));
+
+
+	//var_dump($object);
 	$action = GETPOST('action');
 	
 	$PDOdb = new TPDOdb;
 	
 	$alonestone = new alonestone;
-	$alonestone->loadBy($PDOdb, $object->id, 'note');
+	$alonestone->loadBy($PDOdb, $object->id, 'fk_contact');
 	
 	//var_dump($object);
 	
@@ -52,11 +56,13 @@ function _card(&$object,&$alonestone) {
 	$head = contact_prepare_head($object);
 	dol_fiche_head($head, 'tab104125', '', 0, '');
 	
-	//var_dump($head);
+	//var_dump($object);
 	
 	
 	echo Formulaire::get($object);
 	
+	//echo 'bonjour';
+
 	$formCore=new TFormCore('alonestone.php', 'formalonestone');
 	echo $formCore->hidden('fk_contact', $object->id);
 	echo $formCore->hidden('action', 'save');

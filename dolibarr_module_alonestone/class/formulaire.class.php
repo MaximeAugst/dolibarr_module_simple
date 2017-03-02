@@ -5,6 +5,7 @@ class Formulaire  {
 	static function get(&$contact) {
 
 		$res = "";
+		//var_dump($contact);
 
 		if (isset($_POST['envoyer']))
 		{
@@ -17,16 +18,16 @@ class Formulaire  {
 			$headers .= 'To: '. $contact->user_login .' <' . $contact->email . '>\r\n';
 			$headers .= 'From: Test Test <test@test.fr>';
 
-			mail($contact->email, $subject, $message, $headers);
+			mail($contact->mail, $subject, $message, $headers);
 
-			setEventMessage('Element simple sauvegardé');
+			setEventMessage('E-mail envoyé !');
 			//$res .= '<p>Envoi effectué</p>';
 		}
 
 
 		//if ( $contact->no_email = 0 &&  $contact->email <> "")
 		//{
-
+			//echo $contact->mail;
 
 			$res .= '<form enctype="multipart/form-data" action="" method="POST">';
 				$res .= '<table>';
